@@ -1,3 +1,21 @@
+/*--------------------------------------------------------------------------------------------|
+|	Project			Designers/Developers                                                      |
+|---------------------------------------------------------------------------------------------|
+|	Math Magician	Cheyenne von Kostka
+|					Nicholas Kizer
+|					Pablo Lomeli
+|---------------------------------------------------------------------------------------------|
+|	Date			Changes Made By			Changes											  |
+|---------------------------------------------------------------------------------------------|
+|   4.13.17			Cheyenne von Kostka		Changed link styles to be specified to the nav link.
+|											Added float and display to help resonsiveness to nav links
+|
+|	4.14.17			Cheyenne von Kostka
+|					Nicholas Kizer
+|
+|
+|---------------------------------------------------------------------------------------------|
+
 /* SETS BODY BACKGROUND */
 body {
     height: 500px;
@@ -14,12 +32,12 @@ body {
     background-color: rgba(255,255,255,.5);
     margin-top: 7%;
     margin-left: 25%;
-
     transform-style: preserve-3d;
     -webkit-transform-style: preserve-3d;
     -moz-transform-style: preserve-3d;
   
 }
+
 
 /* SETS SIZE AND POSITION OF THE CONTAINER HOLDING MAIN CONTENT */
 .content {
@@ -36,31 +54,8 @@ p {
 }
 
 /* SETS POSITION AND STYLING OF LINKS -- VERTICAL ALIGNMENT SAFE FOR IE9 
-
-* Cheyenne von Kostka moved to the "nav a" in case we ever add other links
-
-a {
-    padding-top: .25em;
-    padding-right: 1em;
-    padding-bottom: .5em;
-    padding-left: 1em;
-    margin-left: 1%;
-    position: relative;
-    top: 22%;
-    transform: translateY(-22%);
-    -webkit-transform: translateY(-22%);
-    -ms-transform: translateY(-22%);
-    border: 2px solid #0066ff;
-    border-radius: 5px;
-    background-color: #fff;
-    color: #0066ff;
-    text-decoration: none;
-    font-size: 1.25em;
-    font-weight: 900;
-}*/
-
-/* 
 *  Cheyenne von Kostka 4.13.17
+* Cheyenne von Kostka moved to the "nav a" in case we ever add other links
 */
 .nav a {
     float: left; /* Helps with responsive*/
@@ -83,6 +78,11 @@ a {
     font-size: 1.25em;
     font-weight: 900;
 }
+
+span.clear {
+	clear: both; 
+	display:block;
+}	
 /* Moved the Hover so it's only for the nagigation, what if we add more links?
 *  Cheyenne von Kostka 4.13.17
 */
