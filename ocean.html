@@ -1,4 +1,21 @@
 <!DOCTYPE html>
+
+<!--------------------------------------------------------------------------------------------|
+|	Project			Designers/Developers                                                      |
+|---------------------------------------------------------------------------------------------|
+|	Math Magician	Cheyenne von Kostka
+|					Nicholas Kizer
+|					Pablo Lomeli
+|---------------------------------------------------------------------------------------------|
+|	Date			Changes Made By			Changes											  |
+|---------------------------------------------------------------------------------------------|
+| 
+|   4.14.17		 Cheyenne von Kostka		Added flower Box, and the inputs for the javascript
+|                                            Added math.js for looks and testing	
+|								
+|											
+|											
+|--------------------------------------------------------------------------------------------->
 <html>
     
     <head>
@@ -6,6 +23,7 @@
         <title>Math Magician</title>
 		
         <link href="css/styles.css" type="text/css" rel="stylesheet" id="css" />
+		
        <!-- <link href="css/forest.css" type="text/css" rel="stylesheet" id="forest" />
         <link href="css/city.css" type="text/css" rel="stylesheet" id="city" />
         <link href="css/halloween.css" type="text/css" rel="stylesheet" id="halloween" />
@@ -32,6 +50,8 @@
 		<!-- Latest compiled and minified JavaScript -->
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" 
 			integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+			
+		
     </head>
     
     <body>
@@ -74,6 +94,20 @@
             <p>CONTENT AREA</p>
             <p>BACKGROUND IMAGE IS RANDOM ON EACH PAGE LOAD. DURING CERTAIN DATE RANGE BACKGROUND IMAGE IS HALLOWEEN OR CHRISTMAS.</p>
             <p>OR WE CAN SET MULTIPLICATION, DIVISION, ADDITION, AND SUBTRACTION TO ITS OWN THEME COMPARED TO RANDOM</p>
+			
+			<input disabled="true" type="text" class="numberBox" id="changingNumber" value=""></input>
+
+			<label id="mathSign" class="mathSignStyle"></label>
+
+			<input disabled="true" type="text" class="numberBox" id="randomNumber" value=""></input>
+
+			<label id="mathEqualSign" class="mathSignStyle">=</label>
+
+			<input type="text" name="userInput" onkeypress="onTestChange()" class="numberBox" id="testing"></input>
+			
+			<!--Math.js  4.17.17----------------------------------------------------->
+			<script type="text/javascript" src="js/math.js"></script>
+			
         </div>
     
     </body>
