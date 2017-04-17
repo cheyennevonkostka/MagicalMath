@@ -10,32 +10,32 @@
 |   4.13.17			Cheyenne von Kostka		Changed link styles to be specified to the nav link.
 |											Added float and display to help resonsiveness to nav links
 |
-|	4.14.17			Cheyenne von Kostka
-|					Nicholas Kizer
-|
-|
+|	4.14.17			Cheyenne von Kostka		Changed the char type for nav links
+|					Nicholas Kizer			Seperated nav to save room and clean up page
+|											Updated bg image to a free image
+|											Enabled Boostrap | now using lists for nav
 |---------------------------------------------------------------------------------------------|
 
 /* SETS BODY BACKGROUND */
 body {
     height: 500px;
-    background-image: url(../images/ocean_bg.jpg);
+    background-image: url(../images/f_images/ocean_bg_free.jpg);
     background-image: no-repeat;
     background-attachment: fixed;
+	background-size: 100% 100%;
 }
 
 /* SETS SIZE AND POSITION OF NAV BAR -- PREVENTS VERTICAL ALIGN FROM LINKS BEING BLURRY */
 .nav {
-    width: 50%;
-    height: 10%;
+    width: 44.25%;
+    height: 12%;	
     border: 2px solid #0066ff;
-    background-color: rgba(255,255,255,.5);
+    background-color: rgba(255,255,255,.7);
     margin-top: 7%;
-    margin-left: 25%;
+    margin-left: 27%;
     transform-style: preserve-3d;
     -webkit-transform-style: preserve-3d;
     -moz-transform-style: preserve-3d;
-  
 }
 
 
@@ -43,7 +43,7 @@ body {
 .content {
     width: 60%; 
     height: 100%;
-    background-color: rgba(255, 255, 255, .5);
+    background-color: rgba(255, 255, 255, .7);
     margin-top: 5%;
     margin-left: 20%;
 }
@@ -57,19 +57,19 @@ p {
 *  Cheyenne von Kostka 4.13.17
 * Cheyenne von Kostka moved to the "nav a" in case we ever add other links
 */
-.nav a {
+ul.nav li a {
     float: left; /* Helps with responsive*/
     display: block; /* Helps with responsive*/
     padding-top: .25em;
     padding-right: 1em;
     padding-bottom: .5em;
     padding-left: 1em;
-    margin-left: 1%;
+    margin-left: 12px;
     position: relative;
-    top: 22%;
-    transform: translateY(-22%);
-    -webkit-transform: translateY(-22%);
-    -ms-transform: translateY(-22%);
+    top: 18%;
+    transform: translateY(18%);
+    -webkit-transform: translateY(18%);
+    -ms-transform: translateY(18%);
     border: 2px solid #0066ff;
     border-radius: 5px;
     background-color: #fff;
@@ -79,22 +79,20 @@ p {
     font-weight: 900;
 }
 
-span.clear {
-	clear: both; 
-	display:block;
-}	
+#nav1 {
+	width: 40%;
+	margin-left: 29%;	
+}
+#nav2 {
+	margin-top: 0;	
+}
+
+/* SETS STYLES FOR LINKS WHEN HOVERED BY CURSOR
 /* Moved the Hover so it's only for the nagigation, what if we add more links?
 *  Cheyenne von Kostka 4.13.17
 */
-.nav a:hover {
+ul.nav li a:hover {
   border-radius: 5px;
   background-color: #0066ff;
   color: #fff;
 }
-
-/* SETS STYLES FOR LINKS WHEN HOVERED BY CURSOR
-a:hover {
-    border-radius: 5px;
-    background-color: #0066ff;
-    color: #fff;
-} */
