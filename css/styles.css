@@ -29,8 +29,8 @@ body {
 }
 
 /* SETS SIZE AND POSITION OF NAV BAR -- PREVENTS VERTICAL ALIGN FROM LINKS BEING BLURRY */
-
-/* MATH SYMBOL NAV */
+/*
+/* MATH SYMBOL NAV 
 div#symbolNav {
     width: 44.25%;
     height: 30%;	
@@ -45,7 +45,7 @@ div#symbolNav {
 	
 }
 
-	/* MATH SYMBOL NAV IMG LINKS */
+	/* MATH SYMBOL NAV IMG LINKS 
 	#symbolNav img {
 		height: 5em;
 		width: 5em;
@@ -56,26 +56,26 @@ div#symbolNav {
 		-ms-transform: translateY(18%);		
 	}
 
-/* 1-6 NAV */
+/* 1-6 NAV 
 div#nav1 {
 	width: 40%;
 	margin-left: 29%;
-	/* DISPLAY */
+	/* DISPLAY 
 	display: none;
 }
 
-/* 7-12 NAV */
+/* 7-12 NAV 
 div#nav2 {
 	margin-top: 0;
-	/* DISPLAY */
+	/* DISPLAY 
 	display: none;
 }
 
-/* NAVIGATION LINKS */
-/* SETS POSITION AND STYLING OF LINKS -- VERTICAL ALIGNMENT SAFE FOR IE9 */
+/* NAVIGATION LINKS 
+/* SETS POSITION AND STYLING OF LINKS -- VERTICAL ALIGNMENT SAFE FOR IE9 
 #nav1 li a, #nav2 li a {
-    float: left; /* Helps with responsive*/
-    display: block; /* Helps with responsive*/
+    float: left; /* Helps with responsive
+    display: block; /* Helps with responsive
     padding-top: .25em;
     padding-right: 1em;
     padding-bottom: .5em;
@@ -93,6 +93,16 @@ div#nav2 {
     text-decoration: none;
     font-size: 1.25em;
     font-weight: 900;
+}
+*/
+
+.formNav form{
+	width: 44.25%;
+    height: 30%; 
+	border: 2px solid #0066ff;
+    background-color: rgba(255,255,255,.7);
+    margin-top: 7%;
+    margin-left: 27%;	
 }
 
 /* SETS SIZE AND POSITION OF THE CONTAINER HOLDING MAIN CONTENT */

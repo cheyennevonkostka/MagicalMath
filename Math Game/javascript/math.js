@@ -17,8 +17,9 @@ function onTestChange() {
     // If the user has pressed enter
     if (key === 13) {
 		
-		document.getElementById("testing").value = "testing";
+		//document.getElementById("testing").value = "testing";
 		//calls calculation function
+		
         
     }
  
