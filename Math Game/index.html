@@ -9,18 +9,19 @@
 
 <body>
 
-<input disabled="true" type="text" class="numberBox" id="changingNumber" value=""></input>
+<button onclick="settime1();">Time 1min</button>
 
-<label id="mathSign" class="mathSignStyle"></label>
+<button onclick="settime5();">Time 5min</button>
 
-<input disabled="true" type="text" class="numberBox" id="randomNumber" value=""></input>
+<button onclick="startTimer();">Start</button>
 
-<label id="mathEqualSign" class="mathSignStyle">=</label>
 
-<input type="text" name="userInput" onkeypress="onTestChange()" class="numberBox" id="testing"></input>
 
-<script type="text/javascript" src="javascript/math.js"></script>
+<div>Timer: <span id="timer"></span></div>
 
+
+
+<script type="text/javascript" src="javascript/timer.js"></script>
 </body>
 
 </html>
