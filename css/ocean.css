@@ -27,6 +27,10 @@
 |											Added styles for notification
 |											Spaced out radio buttons
 |											Used larger font weight to increase readability
+|
+|	4.24.17			Nicholas Kizer			Added styles for hr element
+|											Added styles for reset button
+|											Adjusted styles to the timer, questions, score to fit when all character spaces are displayed
 |---------------------------------------------------------------------------------------------|
 
 /* SETS BODY BACKGROUND */
@@ -87,9 +91,18 @@ div.formNav {
 	
 }
 
-/* FORM NAV - STYLES FOR START BUTTON */
-.formNav button#submitButton { 
-	margin-left: 46%; 
+/* FORM NAV - STYLES HR */
+hr.style { 
+    width:85%; 
+    margin:1% auto; 
+    border:0px none #fff; 
+    border-top:1px solid #0066ff; 
+}
+
+
+/* FORM NAV - STYLES FOR START AND RESET BUTTON */
+.formNav button#submitButton{ 
+	margin-left: 38%; 
 	background-color: #fff; 
 	border: 2px solid #0066ff;
 	border-radius: 50%; 
@@ -103,9 +116,27 @@ div.formNav {
 }
 
 /* FORM NAV - STYLES FOR START BUTTON HOVER */
-.formNav button#submitButton:hover, .formNav button.timeBtn:hover {
+.formNav button#submitButton:hover, .formNav button.timeBtn:hover, #reset:hover {
 	background-color: #0066ff;
 	color: #fff;	
+	text-decoration: none;
+}
+
+/* FORM NAV - STYLING FOR RESET BUTTON */
+#reset {
+	float: right;	
+	margin-right: 38%; 
+	background-color: #fff; 
+	border: 2px solid #0066ff;
+	border-radius: 50%; 
+	color: #0066ff;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-left: 8px;
+	padding-right: 8px;
+	font-size: 1.5em;
+	font-weight: 500;
+	
 }
 
 /* FORM NAV - STYLES ORDER NUMBERS */

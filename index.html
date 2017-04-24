@@ -27,6 +27,8 @@
 |	4.17-4.20		Pablo Lomeli			Javascript for almost everything implemented except the code for the timer functions but I still attached
 |											them to fit the rest of the javascript. There are a few bugs to fix like stopping the timer accordingly.
 |
+|	4.24.17			Nicholas Kizer			Added a reset button to reload the page which resets the javascript
+|											Added a hr element to divide nav up 
 |--------------------------------------------------------------------------------------------->
 <html>
     
@@ -101,7 +103,9 @@
 				<button onclick="settime5()" type="button" class="timeBtn">5 Minutes</button>
             	<br />
                 <br />
-                <button id="submitButton" type="button" onclick="insertData()">START</button>   
+                <hr class="style" />
+                <button id="submitButton" type="button" onclick="insertData()">Start</button>
+                <a href="index.html" alt="Reset" id="reset">Reset</a>   
             </form>
         </div>
     	
@@ -132,7 +136,7 @@
             </div>
             <br />
             <div id="results">Score:<br /><label id="testResults" class="mathSignStyle"></label></div>
-            
+                        
 			<!--Math.js  4.17.17----------------------------------------------------->
 			<script type="text/javascript" src="js/math.js"></script>
 			
