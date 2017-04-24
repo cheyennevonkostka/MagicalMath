@@ -32,7 +32,7 @@
 /* SETS BODY BACKGROUND */
 body {
     height: 500px;
-    background-image: url(../images/f_images/ocean_bg_free.jpg);
+    background-image: url(../images/ocean_bg.jpg);
     background-image: no-repeat;
     background-attachment: fixed;
 	background-size: 100% 100%;
@@ -41,7 +41,7 @@ body {
 /* INCREASES FONT WIEGHT FOR READABILITY */
 p { font-weight: 600; }
 
-/* SETS POSITION AND LOOK OF THE FORM NAVIGATION */
+/* FORM NAV - SETS POSITION AND LOOK OF THE FORM NAVIGATION */
 div.formNav {
 	width: auto;
     height: auto; 
@@ -71,7 +71,7 @@ div.formNav {
 	font-weight: 700;
 }
 
-/* FORM NAV - STYLES TIME SELECT BUTTONS */
+/* FORM NAV - STYLES FOR TIMER BUTTON (1 MIN. / 5 MIN.) */
 .formNav button.timeBtn {
 	margin-left: 7%;
 	display: block;
@@ -107,9 +107,6 @@ div.formNav {
 	background-color: #0066ff;
 	color: #fff;	
 }
-
-/* FORM NAV - STYLES FOR TIMER BUTTON (1 MIN. / 5 MIN.) */
-
 
 /* FORM NAV - STYLES ORDER NUMBERS */
 #navOrder {
@@ -263,7 +260,7 @@ div.formNav {
 	display: block;
 	float: left;
 	margin-top: 5.25%;
-	margin-left: 20%;
+	margin-left: 15%;
 	background-color: #fff;
 	border: 2px solid #0066ff;	
 	font-size: 4em;
@@ -305,7 +302,7 @@ div#results {
 	display: block;
 	float: left;
 	margin-top: 4%;
-	margin-left: 20%;
+	margin-left: 15%;
 	font-size: 3em;
 	font-weight: 100;
 	background-color: #fff;

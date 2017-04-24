@@ -1,6 +1,27 @@
 // JavaScript Document 
 // 4/20/17
-//Pablo Lomeli: I've commented out almost every single thing on this javascript file and almost completely single handedly cooked this up.
+//Pablo Lomeli: 
+// Cheyenne von Kostka: Timer funtion my creation, Pablo implimented, timer becomes 00:00 after finished tests within the results funtion. And disabled the ability to keep writting answers when timer ends
+/*--------------------------------------------------------------------------------------------|
+|	Project			Designers/Developers                                                      |
+|---------------------------------------------------------------------------------------------|
+|	Math Magician	Cheyenne von Kostka
+|					Nicholas Kizer
+|					Pablo Lomeli
+|---------------------------------------------------------------------------------------------|
+|	Date			Changes Made By			Changes											  |
+|---------------------------------------------------------------------------------------------|
+| 
+|   4.20.17		 	Pablo Lomeli			I've commented out almost every single thing on this javascript file and almost completely single handedly cooked this up.
+|                   Cheyenne von Kostka		Help implement the timer funtionality. 
+|
+|	4.24.17         Cheyenne von Kostka		timer becomes 00:00 after finished tests within the results funtion. 
+|											And disabled the ability to keep writting answers when timer ends             
+|											Var typeTest didn't work, fixed it
+|											Counter shows question on, not question correct
+|---------------------------------------------------------------------------------------------*/
+ 
+ 
  
 // Timer functions
 function settime1(){
@@ -13,6 +34,7 @@ function settime5(){
  document.getElementById('timer').innerHTML =
   "05" + ":" + "00";
   document.getElementById("totalGiven").innerHTML = 100;
+
 }	
 
 function checkSecond(sec) {
@@ -38,7 +60,7 @@ function startTimer() {
   setTimeout(startTimer, 1000);
 }
 
-// stop timer function needed.
+// stop timer function needed. Cheyenne added it within results 4/24/17
 
 
 
@@ -277,7 +299,9 @@ function calculationFunction() {
 //counter feature coding below
 var rightcounter = 0;
 var counter = 0;
-var typeTest = document.getElementById("totalGiven").innerHTML;
+
+	//  var typeTest = document.getElementById("totalGiven").innerHTML; !!!!!! This didn't work
+
 
 function showResult(answerInput) {
 	
@@ -293,7 +317,7 @@ function showResult(answerInput) {
 	  	document.getElementById("answerNotification").innerHTML = "";
 		}, delayMillis);
 		
-		document.getElementById("currentAnswered").innerHTML = rightcounter;
+		document.getElementById("currentAnswered").innerHTML = counter;
 		
 	}
 	
@@ -306,9 +330,10 @@ function showResult(answerInput) {
 	  	document.getElementById("answerNotification").innerHTML = "";
 		}, delayMillis);
 		
+		document.getElementById("currentAnswered").innerHTML = counter;
 	}
 	
-	if(counter == 20 && typeTest == "20")
+	if(counter == 20 && document.getElementById("totalGiven").innerHTML == 20) //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	{
 		document.getElementById("testing").disabled = true;
 		document.getElementById("randomNumber").value = "";
@@ -316,7 +341,7 @@ function showResult(answerInput) {
 		
 		results();
 	}
-	if(counter == 100 && typeTest == "100")
+	if(counter == 100 && document.getElementById("totalGiven").innerHTML == 100)
 	{
 		document.getElementById("testing").disabled = true;
 		document.getElementById("randomNumber").value = "";
@@ -334,15 +359,21 @@ function showResult(answerInput) {
 function results()
 {
 		
-	if(typeTest == "20")
+	if(document.getElementById("totalGiven").innerHTML == 20)
 	{
+		document.getElementById('timer').innerHTML =
+  "00" + ":" + "00";
+		document.getElementById("testing").disabled = true;
 		var results = rightcounter / 20;
 		results = results * 100;
 		document.getElementById("testResults").innerHTML = results.toFixed(2) + "%";
 		
 	}
-	if(typeTest == "50")
+	if(document.getElementById("totalGiven").innerHTML == 100)
 	{
+		document.getElementById('timer').innerHTML =
+  "00" + ":" + "00";
+		document.getElementById("testing").disabled = true;
 		var results = rightcounter / 100;
 		results = results * 100;
 		document.getElementById("testResults").innerHTML = results.toFixed(2) + "%";
