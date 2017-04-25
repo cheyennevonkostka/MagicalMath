@@ -12,13 +12,7 @@
 |	Date			Changes Made By			Changes											  |
 |---------------------------------------------------------------------------------------------|
 | 
-|   4.20.17		 	Pablo Lomeli			I've commented out almost every single thing on this javascript file, I've covered all math symbol 
-|											operations, validations for what symbols are used and if answers are right or wrong. I covered 
-|											putting the right text on the html elements, grabbing the values off html elements and having the 
-|											results display correctly. I implemented timer as mentioned below, different number generators for 
-|											different types of math operations were made, disabling of the menu except the timer and start 
-|											button, correct messages for answers inputted by user, and results show up correctly with counters 
-|											and everything. Still needs bugs fixed.
+|   4.20.17		 	Pablo Lomeli			I've commented out almost every single thing on this javascript file, I've covered all math symbol operations, validations for what symbols are used and if answers are right or wrong. I covered putting the right text on the html elements, grabbing the values off html elements and having the results display correctly. I implemented timer as mentioned below, different number generators for different types of math operations were made, disabling of the menu except the timer and start button, correct messages for answers inputted by user, and results show up correctly with counters and everything. Still needs bugs fixed.
 |
 |					Cheyenne von Kostka 	Timer funtion my creation, Pablo implimented, timer becomes 00:00 after finished tests within the 
 |											results funtion. And disabled the ability to keep writting answers when timer ends
@@ -35,9 +29,17 @@
 |														- Reset button should only be usuable after test results are shown
 |											Fixed results() if statements starting on line 359 of redundent code. (disabling of user 
 |											input in answer box).
+|
+|	4.25.17		Cheyenne von Kostka			Disabled time buttons while test is being taken
+|											Disabled reset during tests, reenabled it after results shown
+|											Attempted to get - to stop showing negative results, can't figure it out, random doesn't seem to want to do what I want it to do
+|
+|	4.25.17		Pablo Lomeli				Enabled validation for the main selection menu. Some progress on refining random number generator.
+|
+|
+|
+|
 |---------------------------------------------------------------------------------------------*/
- 
- 
  
 // Timer functions
 
@@ -46,6 +48,7 @@ function settime1(){
  document.getElementById('timer').innerHTML =
   "01" + ":" + "00";
   document.getElementById("totalGiven").innerHTML = 20;
+  menuitem3 = true;
 }
 
 // sets timer for 5 minute with 100 questions.
@@ -53,7 +56,7 @@ function settime5(){
  document.getElementById('timer').innerHTML =
   "05" + ":" + "00";
   document.getElementById("totalGiven").innerHTML = 100;
-
+	menuitem3 = true;
 }	
 
 //this function handles making the timer have a 0 in the last 9 seconds of the timer.
@@ -83,20 +86,24 @@ function startTimer() {
 
 // stop timer function needed. Cheyenne added it within results 4/24/17 LINE 377
 
-
+var menuitem1 = false;
+var menuitem2 = false;
+var menuitem3 = false;
 
 // insert function that grabs the number selected from the list of numbers
 function insertData(){
+	
 	//Gets the radio button's that are selected and puts them into the corresponding html components.
 	var radios1 = document.getElementsByName('number');
 	var radios2 = document.getElementsByName('mathSign');
-	
+
 	// this loop will look for checked radio button.
 	for (var i = 0, length = radios1.length; i < length; i++) {
 		if (radios1[i].checked) {
 			// Sets the html element to match the picked radio button.
-			document.getElementById("chosenNumber").value = radios1[i].value;
-	
+			//document.getElementById("chosenNumber").value = radios1[i].value;
+			document.getElementById("chosenNumberHIDDEN").value = radios1[i].value;
+			menuitem1 = true;
 			// only one radio can be logically checked, don't check the rest
 			break;
 		}
@@ -104,69 +111,124 @@ function insertData(){
 	for (var i = 0, length = radios2.length; i < length; i++) {
 		if (radios2[i].checked) {
 			// Sets the html elements to match the picked radio button.
-			document.getElementById("mathSign").innerHTML = radios2[i].value;
+			//document.getElementById("mathSign").innerHTML = radios2[i].value;
 			document.getElementById("mathSignHIDDEN").innerHTML = radios2[i].value;
 			// only one radio can be logically checked, don't check the rest
+			menuitem2 = true;
 			break;
 		}
 	}
 	
-	//sets the game menu's selected symbols
-	var currentMathSign = document.getElementById("mathSign").innerHTML;
-	if(currentMathSign == "*")
+	if(menuitem1 == true && menuitem2 == false && menuitem3 == false)
 	{
-		document.getElementById("mathSign").innerHTML = "&times";
+		alert("You need a math sign and time.")
 	}
-	if(currentMathSign == "/")
+	if(menuitem1 == true && menuitem2 == true && menuitem3 == false)
 	{
-		document.getElementById("mathSign").innerHTML = "&divide";
+		alert("You need a time.")
 	}
-	
-	//Disables menu so test may begin.
-	document.getElementById("submitButton").disabled = true;
-	document.getElementById("testing").disabled = false;
-	
-	//these loops disable all the radio buttons
-	var radios1 = document.getElementsByName('number');
-
-	for (var i=0, iLen=radios1.length; i<iLen; i++) {
-	  radios1[i].disabled = true;
-	} 
-	var radios2 = document.getElementsByName('mathSign');
-
-	for (var i=0, iLen=radios2.length; i<iLen; i++) {
-	  radios2[i].disabled = true;
-	} 
-	
-	//These checks will decide which random number generator to use to that the right numbers are picked to test the user
-	if(currentMathSign != "/")
+	if(menuitem1 == false && menuitem2 == true && menuitem3 == false)
 	{
-		// Random number generator (Needs refinement most likely)
-		var ranNum = Math.floor((Math.random() * 12) + 1);
-		document.getElementById("randomNumber").value = ranNum;
+		alert("You need a number and time.")
+	}
+	if(menuitem1 == false && menuitem2 == true && menuitem3 == true)
+	{
+		alert("You need a number.")
+	}
+	if(menuitem1 == true && menuitem2 == false && menuitem3 == true)
+	{
+		alert("You need a math sign.")
+	}
+	if(menuitem1 == false && menuitem2 == false && menuitem3 == true)
+	{
+		alert("You need a number, and a math sign.")
+	}
+	if(menuitem1 == false && menuitem2 == false && menuitem3 == false)
+	{
+		alert("You need a number, a math sign, and time.")
 	}
 	
-	else if(currentMathSign == "/")
+	if(menuitem1 == true && menuitem2 == true && menuitem3 == true)
 	{
-		var selectedNumber = document.getElementById("chosenNumber").value;
-		function GetRandomNumberBetween(lo, hi) {
-		  return Math.floor(lo + Math.random() * (hi - lo));
+		//alert("All selections are correct, test will begin after confirming this.");
+		document.getElementById("timeBtn1").disabled = true;
+		document.getElementById("timeBtn2").disabled = true;
+		document.getElementById("reset").disabled = true; 
+		document.getElementById("mathSign").innerHTML = document.getElementById("mathSignHIDDEN").innerHTML;
+		document.getElementById("chosenNumber").value = document.getElementById("chosenNumberHIDDEN").value;
+		//sets the game menu's selected symbols
+		var currentMathSign = document.getElementById("mathSign").innerHTML;
+		if(currentMathSign == "*")
+		{
+			document.getElementById("mathSign").innerHTML = "&times";
+		}
+		if(currentMathSign == "/")
+		{
+			document.getElementById("mathSign").innerHTML = "&divide";
 		}
 		
-		//start of a random number generator thats divisible by the number selected
-		Number.prototype.FindClosestNumberThatIsDivisibleBy = function(n) {
-		  return Math.round(this / n) * n; 
-		  //simplify as per Guffa
-		};
+		//Disables menu so test may begin.
+		document.getElementById("submitButton").disabled = true;
+		document.getElementById("testing").disabled = false;
 		
-		var r = GetRandomNumberBetween(6, 144);
-		var c = r.FindClosestNumberThatIsDivisibleBy(selectedNumber);
-		document.getElementById("randomNumber").value = c;
+		//these loops disable all the radio buttons
+		var radios1 = document.getElementsByName('number');
+	
+		for (var i=0, iLen=radios1.length; i<iLen; i++) {
+		  radios1[i].disabled = true;
+		} 
+		var radios2 = document.getElementsByName('mathSign');
+	
+		for (var i=0, iLen=radios2.length; i<iLen; i++) {
+		  radios2[i].disabled = true;
+		} 
 		
+		//These checks will decide which random number generator to use to that the right numbers are picked to test the user
+		/* if (currentMathSign == "-") // trying to get negatives to stop
+			{
+				
+			alert("butt") // it gets to this, but can't get a test case to not go - trying to get the random number to be EX max 12 min chosen so like 4
+			function getRandomIntInclusive(min, max) {
+			  min = Math.ceil(min);
+			  max = Math.floor(max);
+			return Math.floor(Math.random() * (max - min + 1)) + min; }
+				
+				var selectedNumber = document.getElementById("chosenNumber").value;
+				
+				var ranNum = getRandomIntInclusive(selectedNumber, 12);
+				document.getElementById("randomNumber").value = ranNum;
+				alert(selectedNumber)
+				alert(ranNum)
+			} */
+			
+		if(currentMathSign != "/")
+		{
+			// Random number generator (Needs refinement most likely)
+			var ranNum = Math.floor((Math.random() * 12) + 1);
+			document.getElementById("randomNumber").value = ranNum;
+		}
+		
+		else if(currentMathSign == "/")
+		{
+			var selectedNumber = document.getElementById("chosenNumber").value;
+				function GetRandomNumberBetween(lo, hi) {
+				  return Math.floor(lo + Math.random() * (hi - lo));
+				}
+				
+				Number.prototype.FindClosestNumberThatIsDivisibleBy = function(n) {
+				  return Math.round(this / n) * n; 
+				  //simplify as per Guffa
+				};
+				
+				var r = GetRandomNumberBetween(selectedNumber, (12 * selectedNumber));
+				var c = r.FindClosestNumberThatIsDivisibleBy(selectedNumber);
+				document.getElementById("randomNumber").value = c;
+			
+		}
+		//This initiates the timer and puts the focus on the answer box so that the user can start fast.
+		startTimer();
+		document.getElementById("testing").focus();
 	}
-	//This initiates the timer and puts the focus on the answer box so that the user can start fast.
-	startTimer();
-	document.getElementById("testing").focus();
 
 }
 
@@ -185,6 +247,23 @@ function onTestChange() {
 			// calls score function to count the answer right.
 			currentMathSign = document.getElementById("mathSignHIDDEN").innerHTML;
 			// checks to see which random number generator to use. and gives answer related message back to user.
+			
+		/*	if (currentMathSign == "-") // trying to get negatives to stop
+			{
+				var selectedNumber = document.getElementById("chosenNumber").value;
+				function getRandomIntInclusive(min, max) {
+			  min = Math.ceil(min);
+			  max = Math.floor(max);
+				return Math.floor(Math.random() * (max - min + 1)) + min; }
+				//var ranNum = Math.floor(Math.random() * (12 - selectedNumber + 1 )) + selectedNumber;
+				var ranNum = getRandomIntInclusive(selectedNumber, 12);
+				document.getElementById("randomNumber").value = ranNum;
+				document.getElementById("testing").value = "";
+				var answer = "correct";
+				showResult(answer);
+				
+			} */
+			
 			if(currentMathSign != "/")
 			{
 				// Random number generator (Needs refinement most likely)
@@ -224,16 +303,19 @@ function onTestChange() {
 			//grabs math sign to work with picking the right number generator. This is also the wrong answer section.
 			currentMathSign = document.getElementById("mathSignHIDDEN").innerHTML;
 			// checks to see which random number generator to use. and gives answer related message back to user.
-			if(currentMathSign != "/")
-			{
-				// Random number generator (Needs refinement most likely)
-				var ranNum = Math.floor((Math.random() * 12) + 1);
-				document.getElementById("randomNumber").value = ranNum;
-				//alert("Answer was wrong and this ran good")
-				document.getElementById("testing").value = "";
-				var answer = "wrong";
-				showResult(answer);
-			}
+			
+			
+		 if(currentMathSign != "/")
+					{
+						// Random number generator (Needs refinement most likely)
+						var ranNum = Math.floor((Math.random() * 12) + 1);
+						document.getElementById("randomNumber").value = ranNum;
+						//alert("Answer was wrong and this ran good")
+						document.getElementById("testing").value = "";
+						var answer = "wrong";
+						showResult(answer);
+					}
+					
 			
 			else if(currentMathSign == "/")
 			{
@@ -389,6 +471,7 @@ function results()
 		document.getElementById('timer').innerHTML =
   "00" + ":" + "00";
 		document.getElementById("testing").disabled = true;
+		document.getElementById("reset").disabled = false; 
 		var results = rightcounter / 20;
 		results = results * 100;
 		document.getElementById("testResults").innerHTML = results.toFixed(0) + "%";
@@ -400,6 +483,7 @@ function results()
 		document.getElementById('timer').innerHTML =
   "00" + ":" + "00";
 		document.getElementById("testing").disabled = true;
+		document.getElementById("reset").disabled = false;
 		var results = rightcounter / 100;
 		results = results * 100;
 		document.getElementById("testResults").innerHTML = results.toFixed(0) + "%";

@@ -74,10 +74,11 @@
     <body>
         <div class="formNav">
         	<div class="navTopSpace"></div>
+            <label id="chosenNumberHIDDEN" class="mathSignStyle"></label>
         	<p><span id="navOrder">1</span>Pick a number group you want to practice:</p>
             <form id="testChoice">
                 <span id="numSelect">
-                    <input type="radio" name="number" value="1" required> 1 
+                    <input type="radio" name="number" value="1" id="numSign" required > 1 
                     <input type="radio" name="number" value="2" id="numSign" > 2 
                     <input type="radio" name="number" value="3" id="numSign" > 3 
                     <input type="radio" name="number" value="4" id="numSign" > 4 
@@ -102,14 +103,19 @@
                 <br />
                 <br />
                 <p><span id="navOrder">3</span>Pick how much time you want:</p>
-                <button onclick="settime1()" type="button" class="timeBtn">1 Minute</button>
-				<button onclick="settime5()" type="button" class="timeBtn">5 Minutes</button>
+                <button onclick="settime1()" type="button" class="timeBtn" id="timeBtn1">1 Minute</button>
+				<button onclick="settime5()" type="button" class="timeBtn" id="timeBtn2">5 Minutes</button>
             	<br />
                 <br />
                 <hr class="style" />
                 <button id="submitButton" type="button" onclick="insertData()">Start</button>
-                <a href="index.html" alt="Reset" id="reset">Reset</a>   
+                <!--<a href="index.html" alt="Reset" id="reset">Reset</a>  --> 
+				<button type="button" id="reset" onClick="window.location.reload()">Reset</button>
             </form>
+        </div>
+        
+        <div id="results">
+        	Score:<br /><label id="testResults" class="mathSignStyle"></label>
         </div>
     	
         
@@ -121,29 +127,37 @@
                 	<li>Type your answer into the box and hit the 'Enter' key on your keyboard.</li>
             		<li>Try to answer as many questions right as possible in the time limit.</li>
                 </ul>		
-            </div>    	
-			<input disabled="true" type="text" class="numberBox" id="randomNumber" value=""></input>
-
-			<label id="mathSign" class="mathSignStyle"></label>
-            <label id="mathSignHIDDEN" class="mathSignStyle"></label>
-            <input disabled="true" type="text" class="numberBox" id="chosenNumber" value=""></input>
-
-			<label id="mathEqualSign" class="mathSignStyle">=</label>
-			<input disabled="true" type="text" name="userInput" onkeypress="onTestChange()" class="numberBox" id="testing" value=""></input>
-            <label id="answerNotification" class="mathSignStyle"></label>
-            <br />
-            <div id="time">Time:<br /><span id="timer"></span></div>
-            <br />
+            </div> 
+            
+            <div id="time">
+            	Time:<br /><span id="timer"></span>
+            </div>  
+            
             <div id="questionCount">
             	<label id="currentAnswered" class="mathSignStyle">0</label>/<label id="totalGiven" class="mathSignStyle">20</label>
-            </div>
-            <br />
-            <div id="results">Score:<br /><label id="testResults" class="mathSignStyle"></label></div>
-                        
-			<!--Math.js  4.17.17----------------------------------------------------->
-			<script type="text/javascript" src="js/math.js"></script>
+            </div> 	
+            
+            
+            <br /> 
+            
+            <label id="answerNotification" class="mathSignStyle"></label>
+                   
+			
 			
         </div>
+        <div id="calculator">
+                <input disabled="true" type="text" class="numberBox" id="randomNumber" value=""></input>
+    
+                <label id="mathSign" class="mathSignStyle"></label>
+                <label id="mathSignHIDDEN" class="mathSignStyle"></label>
+                <input disabled="true" type="text" class="numberBox" id="chosenNumber" value=""></input>
+                
+    
+                <label id="mathEqualSign" class="mathSignStyle">=</label>
+                <input disabled="true" type="text" name="userInput" onkeypress="onTestChange()" class="numberBox" id="testing" value=""></input>
+            </div>
+            <!--Math.js  4.17.17----------------------------------------------------->
+			<script type="text/javascript" src="js/math.js"></script>
     
     </body>
     
