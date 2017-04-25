@@ -48,13 +48,13 @@ p { font-weight: 600; }
 /* FORM NAV - SETS POSITION AND LOOK OF THE FORM NAVIGATION */
 div.formNav {
 	width: auto;
-    height: auto; 
+    height: 63%; 
 	padding: .5em; 
 	border: 2px solid #0066ff;
     background-color: rgba(255, 255, 255, .8);
     margin-top: 2%;
-    margin-left: 27%;
-	margin-right: 27%;	
+    margin-left: 25%;
+	margin-right: 25%;	
 }
 /* FORM NAV - STYLES FOR NUMBER SELECT */
 .formNav #numSelect {  
@@ -102,7 +102,9 @@ hr.style {
 
 /* FORM NAV - STYLES FOR START AND RESET BUTTON */
 .formNav button#submitButton{ 
+	float: left;
 	margin-left: 38%; 
+	display: block;
 	background-color: #fff; 
 	border: 2px solid #0066ff;
 	border-radius: 50%; 
@@ -117,15 +119,16 @@ hr.style {
 
 /* FORM NAV - STYLES FOR START BUTTON HOVER */
 .formNav button#submitButton:hover, .formNav button.timeBtn:hover, #reset:hover {
-	background-color: #0066ff;
-	color: #fff;	
+	background-color: #ffff00;
+	color: #0066ff;	
 	text-decoration: none;
 }
 
 /* FORM NAV - STYLING FOR RESET BUTTON */
 #reset {
-	float: right;	
-	margin-right: 38%; 
+	float: left;
+	display: block;	
+	margin-left: 5%; 
 	background-color: #fff; 
 	border: 2px solid #0066ff;
 	border-radius: 50%; 
@@ -206,8 +209,8 @@ hr.style {
 /* MATH PRACTICE - STYLES RIGHT OR WRONG ANSWER NOTIFICATION */
 #answerNotification {
 	margin-top: 5%;
-	margin-left: 20%;
-	color: #fff;
+	margin-left: 10%;
+	color: #ffff00;
 	font-size: 3em;
 	font-weight: 500;
 	text-shadow: 1px 1px 0 #0066ff,
@@ -284,17 +287,17 @@ hr.style {
 /* MATH PRACTICE - STYLING FOR QUESTION COUNTER */
 
 #questionCount {
-	padding-top: .45em;
+	padding-top: .7em;
 	padding-left: .5em;
 	padding-right: .5em;
-	height: 132px;
+	height: 130px;
 	display: block;
 	float: left;
 	margin-top: 5.25%;
 	margin-left: 15%;
 	background-color: #fff;
 	border: 2px solid #0066ff;	
-	font-size: 4em;
+	font-size: 3em;
 	font-weight: 500;
 	color: #ffff00;
 	text-shadow: 1px 1px 0 #0066ff,
@@ -332,7 +335,7 @@ div#results {
 	height: 125px;
 	display: block;
 	float: left;
-	margin-top: 4%;
+	margin-top: 3.5%;
 	margin-left: 15%;
 	font-size: 3em;
 	font-weight: 100;

@@ -1,7 +1,7 @@
 // JavaScript Document 
 // 4/20/17
-//Pablo Lomeli: 
-// Cheyenne von Kostka: Timer funtion my creation, Pablo implimented, timer becomes 00:00 after finished tests within the results funtion. And disabled the ability to keep writting answers when timer ends
+// 
+// 
 /*--------------------------------------------------------------------------------------------|
 |	Project			Designers/Developers                                                      |
 |---------------------------------------------------------------------------------------------|
@@ -12,24 +12,43 @@
 |	Date			Changes Made By			Changes											  |
 |---------------------------------------------------------------------------------------------|
 | 
-|   4.20.17		 	Pablo Lomeli			I've commented out almost every single thing on this javascript file and almost completely single handedly cooked this up.
+|   4.20.17		 	Pablo Lomeli			I've commented out almost every single thing on this javascript file, I've covered all math symbol 
+|											operations, validations for what symbols are used and if answers are right or wrong. I covered 
+|											putting the right text on the html elements, grabbing the values off html elements and having the 
+|											results display correctly. I implemented timer as mentioned below, different number generators for 
+|											different types of math operations were made, disabling of the menu except the timer and start 
+|											button, correct messages for answers inputted by user, and results show up correctly with counters 
+|											and everything. Still needs bugs fixed.
+|
+|					Cheyenne von Kostka 	Timer funtion my creation, Pablo implimented, timer becomes 00:00 after finished tests within the 
+|											results funtion. And disabled the ability to keep writting answers when timer ends
+|
 |                   Cheyenne von Kostka		Help implement the timer funtionality. 
 |
-|	4.24.17         Cheyenne von Kostka		timer becomes 00:00 after finished tests within the results funtion. 
-|											And disabled the ability to keep writting answers when timer ends             
+|	4.24.17         Cheyenne von Kostka		timer becomes 00:00 after finished tests within the results funtion.              
 |											Var typeTest didn't work, fixed it
-|											Counter shows question on, not question correct
+|											Made percentage with no decimal
+|
+|	4.24.17			Pablo Lomeli			Reviewed code, commented out what almost every single thing does, and checked for bugs.
+|											Current Bugs: - Start button will start without needed parameters.
+|														- After pressing start, and then hitting the type of test button, it will reset the test
+|														- Reset button should only be usuable after test results are shown
+|											Fixed results() if statements starting on line 359 of redundent code. (disabling of user 
+|											input in answer box).
 |---------------------------------------------------------------------------------------------*/
  
  
  
 // Timer functions
+
+// sets timer for 1 minute with 20 questions.
 function settime1(){
  document.getElementById('timer').innerHTML =
   "01" + ":" + "00";
   document.getElementById("totalGiven").innerHTML = 20;
 }
 
+// sets timer for 5 minute with 100 questions.
 function settime5(){
  document.getElementById('timer').innerHTML =
   "05" + ":" + "00";
@@ -37,12 +56,14 @@ function settime5(){
 
 }	
 
+//this function handles making the timer have a 0 in the last 9 seconds of the timer.
 function checkSecond(sec) {
 	if (sec < 10 && sec >= 0) {sec = "0" + sec}; // add zero in front of numbers < 10
 	if (sec < 0) {sec = "59"};
   return sec;
 }
 
+// starts the timer, and continueally degrades it so that it will reach 0, it will then run the results function when it reaches 0.
 function startTimer() {
   var presentTime = document.getElementById('timer').innerHTML;
   var timeArray = presentTime.split(/[:]+/);
@@ -60,7 +81,7 @@ function startTimer() {
   setTimeout(startTimer, 1000);
 }
 
-// stop timer function needed. Cheyenne added it within results 4/24/17
+// stop timer function needed. Cheyenne added it within results 4/24/17 LINE 377
 
 
 
@@ -70,9 +91,10 @@ function insertData(){
 	var radios1 = document.getElementsByName('number');
 	var radios2 = document.getElementsByName('mathSign');
 	
+	// this loop will look for checked radio button.
 	for (var i = 0, length = radios1.length; i < length; i++) {
 		if (radios1[i].checked) {
-			// do whatever you want with the checked radio
+			// Sets the html element to match the picked radio button.
 			document.getElementById("chosenNumber").value = radios1[i].value;
 	
 			// only one radio can be logically checked, don't check the rest
@@ -81,7 +103,7 @@ function insertData(){
 	}
 	for (var i = 0, length = radios2.length; i < length; i++) {
 		if (radios2[i].checked) {
-			// do whatever you want with the checked radio
+			// Sets the html elements to match the picked radio button.
 			document.getElementById("mathSign").innerHTML = radios2[i].value;
 			document.getElementById("mathSignHIDDEN").innerHTML = radios2[i].value;
 			// only one radio can be logically checked, don't check the rest
@@ -116,6 +138,7 @@ function insertData(){
 	  radios2[i].disabled = true;
 	} 
 	
+	//These checks will decide which random number generator to use to that the right numbers are picked to test the user
 	if(currentMathSign != "/")
 	{
 		// Random number generator (Needs refinement most likely)
@@ -141,7 +164,7 @@ function insertData(){
 		document.getElementById("randomNumber").value = c;
 		
 	}
-	
+	//This initiates the timer and puts the focus on the answer box so that the user can start fast.
 	startTimer();
 	document.getElementById("testing").focus();
 
@@ -155,13 +178,13 @@ function onTestChange() {
 
     // If the user has pressed enter
     if (key === 13) {
-		
+		//This will grab the value of either true or false to check if user input was right or wrong.
 		var testSolution = calculationFunction();
-		
+		// this runs when user was right.
 		if(testSolution == true){
 			// calls score function to count the answer right.
 			currentMathSign = document.getElementById("mathSignHIDDEN").innerHTML;
-			
+			// checks to see which random number generator to use. and gives answer related message back to user.
 			if(currentMathSign != "/")
 			{
 				// Random number generator (Needs refinement most likely)
@@ -198,8 +221,9 @@ function onTestChange() {
 		
 		}
 		else if(testSolution == false){
+			//grabs math sign to work with picking the right number generator. This is also the wrong answer section.
 			currentMathSign = document.getElementById("mathSignHIDDEN").innerHTML;
-			
+			// checks to see which random number generator to use. and gives answer related message back to user.
 			if(currentMathSign != "/")
 			{
 				// Random number generator (Needs refinement most likely)
@@ -299,20 +323,20 @@ function calculationFunction() {
 //counter feature coding below
 var rightcounter = 0;
 var counter = 0;
-
-	//  var typeTest = document.getElementById("totalGiven").innerHTML; !!!!!! This didn't work
-
-
+	 
+// This function will deliever the correct corresponding response message for the answer inputted.
 function showResult(answerInput) {
-	
+	// This will have the message stay for 1 second.
 	var delayMillis = 1000; //1 second
 
+	// if statments to cover the two possible solutions from user input. Future version will probably have one for input other than numbers.
 	if(answerInput == "correct")
 	{
+		// if its right it will count the amount right and will add for the total counter to catch the right amount of problems done.
 		rightcounter++;
 		counter++;
 		document.getElementById("answerNotification").innerHTML = "Good job!";
-		
+		// this function handles the delay and display of the message.
 		setTimeout(function() {
 	  	document.getElementById("answerNotification").innerHTML = "";
 		}, delayMillis);
@@ -333,9 +357,11 @@ function showResult(answerInput) {
 		document.getElementById("currentAnswered").innerHTML = counter;
 	}
 	
-	if(counter == 20 && document.getElementById("totalGiven").innerHTML == 20) //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	// these if statements will check to see if the counter has hit the required amount and will check to make sure the right test is 
+	// selected. Then show results. Also the quiz numbers are removed.
+	if(counter == 20 && document.getElementById("totalGiven").innerHTML == 20)
 	{
-		document.getElementById("testing").disabled = true;
+		
 		document.getElementById("randomNumber").value = "";
 		document.getElementById("chosenNumber").value = "";
 		
@@ -343,13 +369,12 @@ function showResult(answerInput) {
 	}
 	if(counter == 100 && document.getElementById("totalGiven").innerHTML == 100)
 	{
-		document.getElementById("testing").disabled = true;
+		
 		document.getElementById("randomNumber").value = "";
 		document.getElementById("chosenNumber").value = "";
 		
 		results();
 	}
-	// if statement need to catch when the timer goes off to do what these ones will do as well
 	
 	
 }
@@ -358,7 +383,7 @@ function showResult(answerInput) {
 // results feature coded below
 function results()
 {
-		
+		// this will show the results for the 20 questions test.
 	if(document.getElementById("totalGiven").innerHTML == 20)
 	{
 		document.getElementById('timer').innerHTML =
@@ -366,9 +391,10 @@ function results()
 		document.getElementById("testing").disabled = true;
 		var results = rightcounter / 20;
 		results = results * 100;
-		document.getElementById("testResults").innerHTML = results.toFixed(2) + "%";
+		document.getElementById("testResults").innerHTML = results.toFixed(0) + "%";
 		
 	}
+	// this will show the results for the 100 questions test.
 	if(document.getElementById("totalGiven").innerHTML == 100)
 	{
 		document.getElementById('timer').innerHTML =
@@ -376,7 +402,7 @@ function results()
 		document.getElementById("testing").disabled = true;
 		var results = rightcounter / 100;
 		results = results * 100;
-		document.getElementById("testResults").innerHTML = results.toFixed(2) + "%";
+		document.getElementById("testResults").innerHTML = results.toFixed(0) + "%";
 		
 	}
 }
