@@ -31,6 +31,24 @@
 |	4.24.17			Nicholas Kizer			Added styles for hr element
 |											Added styles for reset button
 |											Adjusted styles to the timer, questions, score to fit when all character spaces are displayed
+|
+|	4.26.17			Nicholas Kizer			Adjusted styles to fit the chromebook
+|											centered the text for the score, timer, and question count
+|
+|	4.28.17			Nicholas Kizer			Added a media query to style the calculator and notification for larger screens
+|---------------------------------------------------------------------------------------------|
+|	PASTE BIN		
+|---------------------------------------------------------------------------------------------|
+|					COLORS
+|					#0066ff							Blue
+|					#ffffff							White
+|					#ffff00							Yellow
+|					rgba (255, 255, 255, .7)		White - 70% opacity
+|
+|					BORDERS
+|					2px solid #0066ff
+|
+|
 |---------------------------------------------------------------------------------------------|
 
 /* SETS BODY BACKGROUND */
@@ -52,8 +70,8 @@ div.formNav {
 	padding: .5em; 
 	border: 2px solid #0066ff;
     background-color: rgba(255, 255, 255, .8);
-    margin-top: 2%;
-    margin-left: 5%;
+    margin-top: .75%;
+    margin-left: 12%;
 		
 }
 /* FORM NAV - STYLES FOR NUMBER SELECT */
@@ -161,8 +179,8 @@ hr.style {
     width: 57%; 
     height: 60%;
     background-color: rgba(255, 255, 255, .7);
-    margin-top: 2%;
-    margin-left: 5%;
+    margin-top: .75%;
+    margin-left: 12%;
 }
 
 /* MATH PRACTICE - STYLES INSTRUCTION BANNER */
@@ -198,7 +216,10 @@ hr.style {
 }
 
 /* MATH PRACTICE - MOVES CALCULATOR CONTAINER UP */
-#calculator { margin-top: -24%; margin-left: 7%; }
+#calculator {
+	margin-top: -24%;
+	margin-left: 15%; 
+}
 
 /* MATH PRACTICE - INCREASES FONT SIZE FOR MATH SIGN */ 
 #mathSign { font-size: 3em; }
@@ -256,7 +277,7 @@ hr.style {
 /* MATH PRACTICE - STYLING FOR TIMER BOX*/
 #time {
 	padding-bottom: 3em;
-	padding-left: .75em;
+	padding-left: .35em;
 	padding-right: .25em;
 	width: 185px;
 	height: 125px;
@@ -266,6 +287,7 @@ hr.style {
 	margin-left: 104%;
 	font-size: 3em;
 	font-weight: 500;
+	text-align: center;
 	background-color: #fff;
 	border: 2px solid #0066ff;
 	clear: left;
@@ -318,6 +340,7 @@ hr.style {
 	font-size: 3em;
 	font-weight: 500;
 	color: #ffff00;
+	text-align: center;
 	text-shadow: 1px 1px 0 #0066ff,
     			 -1px 1px 0 #0066ff,
     			 1px -1px 0 #0066ff,
@@ -355,9 +378,10 @@ div#results {
 	display: block;
 	float: left;
 	margin-top: -16%;
-	margin-left: 64.5%;
+	margin-left: 71%;
 	font-size: 3em;
 	font-weight: 100;
+	text-align: center;
 	background-color: #fff;
 	border: 2px solid #0066ff;	
 }
@@ -389,4 +413,14 @@ label#testResults {
    				 -2px 1px 0 #0066ff,
    				 2px -1px 0 #0066ff,
    				 -2px -1px 0 #0066ff;	
+}
+
+/* MATH MAGICIAN - STYLES FOR A LARGER SCREEN */
+@media only screen and (min-width: 500px) {
+	
+	/* MATH PRACTICE - STYLES FOR TEXTBOXES */
+	#randomNumber, #chosenNumber, #testing { margin-top: 15%; }
+	
+	/* MATH PRACTICE - STYLES RIGHT OR WRONG ANSWER NOTIFICATION */
+	#answerNotification { margin-top: -6%; }
 }
